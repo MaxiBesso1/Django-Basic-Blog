@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Log in</title>
+</head>
+<body>
+    <div class="container-fluid">
+        {% include 'header.html'%}
+        <div class="row">
+            <div class="col-sm-12 my-3"></div>
+        </div>
+        <div class="row my-5">
+        <div class="col-sm-3 col-1 col-md-3 col-lg-4"></div>
+        <div class="col-sm-6 col-10 col-md-6 col-lg-4">
+            <div class="form-group border rounded text-center p-3">
+                <h3>Log in</h3>
+                <form action="/verificar_usuario/" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="nickname-post"  class="form-control mt-3" placeholder="nickname">
+                    <input type="password" name="password-post" class="form-control mt-3" placeholder="password">
+                    <input type="submit" value="Log in" class="btn btn-block bg-info mt-3">
+                </form>
+                <div class="sing-in mt-2">
+                    <h5><a href="Registrarse/" class="btn btn-lg bg-outline-info">Sing in</a></h5>
+                    {% if err %}
+                        <h6 class="text-alert">Invalid nickname or password</h6>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-1 col-md-3 col-lg-4"></div>
+        </div>
+    </div>
+</body>
+</html>
